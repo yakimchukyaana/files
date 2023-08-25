@@ -1,4 +1,5 @@
 package guru.qa;
+
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
@@ -12,6 +13,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -26,7 +28,7 @@ public class ZipTest {
     @DisplayName("Check CSV in ZIP")
     void csvTest() throws Exception {
         try (ZipInputStream zis = openZipStream()) {
-            verifyZipEntryContent(zis, "textCSV.csv", inputStream -> {
+            verifyZipEntryContent(zis, "testCSV.csv", inputStream -> {
 
                 Reader reader = new InputStreamReader(inputStream);
                 CSVReader csvReader = new CSVReader(reader);
